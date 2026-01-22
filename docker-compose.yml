@@ -17,7 +17,7 @@ services:
       context: ./frontend
       args:
         NEXT_PUBLIC_API_URL: https://python.fokusistatistik.com/api
-        CACHE_BUST: "${CACHE_BUST:-2}"
+        CACHE_BUST: "${CACHE_BUST:-3}"
     container_name: fokus_frontend
     restart: always
     ports:

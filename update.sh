@@ -11,6 +11,8 @@ git fetch origin test && git reset --hard origin/test
 
 echo "🛑 2. Eski servisler durduruluyor ve temizleniyor..."
 docker compose down --remove-orphans
+echo "🧹 2.5. Derin temizlik: Docker cache ve imajları siliniyor..."
+docker system prune -af
 
 echo "🏗️ 3. İmajlar sıfırdan inşa ediliyor (No Cache + Cache Bust)..."
 CACHE_BUST=$(date +%s) docker compose build --no-cache
