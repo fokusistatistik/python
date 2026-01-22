@@ -31,19 +31,19 @@ export const login = async (username: string, password: string) => {
   params.append('username', username);
   params.append('password', password);
 
-  const response = await api.post('/api/token', params, {
+  const response = await api.post('/token', params, {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
   });
   return response.data;
 };
 
 export const getSystemInfo = async () => {
-  const response = await api.get('/api/system-info');
+  const response = await api.get('/system-info');
   return response.data;
 };
 
 export const analyzeJson = async (data: number[]) => {
-  const response = await api.post('/api/analyze-json', { data });
+  const response = await api.post('/analyze-json', { data });
   return response.data;
 };
 
@@ -51,7 +51,7 @@ export const analyzeFile = async (file: File) => {
   const formData = new FormData();
   formData.append('file', file);
 
-  const response = await api.post('/api/analyze-file', formData, {
+  const response = await api.post('/analyze-file', formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
