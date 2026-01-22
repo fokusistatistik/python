@@ -21,7 +21,18 @@ export default function LoginPage() {
             router.push('/');
         } catch (err: any) {
             console.error(err);
-            setError('Invalid credentials');
+            const status = err.response?.status;
+            const detail = err.response?.data?.detail;
+
+            if (status === 401) {
+                setError('Geçersiz kullanıcı adı veya şifre.');
+            } else if (status === 404) {
+                setError('API uç noktası bulunamadı (404). Sunucu yapılandırmasını kontrol edin.');
+            } else if (err.message === 'Network Error') {
+                setError('Ağ Hatası: Sunucuya ulaşılamıyor. URL veya SSL ayarlarını kontrol edin.');
+            } else {
+                setError(`Giriş Başarısız: ${detail || err.message || 'Bilinmeyen Hata'}`);
+            }
         } finally {
             setLoading(false);
         }
