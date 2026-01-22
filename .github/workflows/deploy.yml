@@ -14,10 +14,9 @@ jobs:
           host: 145.223.85.215
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
-          script: |
             # Create directory if not exists
-            mkdir -p /opt/fokus-istatistik
-            cd /opt/fokus-istatistik
+            mkdir -p /root/python-api
+            cd /root/python-api
 
             # Clone or Pull
             if [ -d ".git" ]; then
