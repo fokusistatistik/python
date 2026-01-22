@@ -6,7 +6,7 @@ services:
     container_name: fokus_backend
     restart: always
     ports:
-      - "8000:8000"
+      - "8050:8000"
     volumes:
       - ./app:/app
     environment:
@@ -20,18 +20,6 @@ services:
     container_name: fokus_frontend
     restart: always
     ports:
-      - "3000:3000"
+      - "3050:3000"
     depends_on:
       - backend
-
-  nginx:
-    image: nginx:alpine
-    container_name: fokus_nginx
-    restart: always
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
-    depends_on:
-      - backend
-      - frontend
