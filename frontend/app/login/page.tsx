@@ -46,7 +46,7 @@ export default function LoginPage() {
 
             <div className="glass-panel w-full max-w-md p-8 relative z-10">
                 <div className="text-center mb-8">
-                    <div className="w-12 h-12 bg-gradient-to-tr from-blue-600 to-violet-600 rounded-lg shadow-lg shadow-blue-500/30 mx-auto mb-4"></div>
+                    <img src="https://static.fokusistatistik.com/resimler/favicon.png" alt="Fokus Logo" className="w-16 h-16 mx-auto mb-4 drop-shadow-lg" />
                     <h1 className="text-2xl font-bold text-slate-900">Welcome Back</h1>
                     <p className="text-slate-500 text-sm">Sign in to Fokus İstatistik Platform</p>
                 </div>
