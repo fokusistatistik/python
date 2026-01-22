@@ -17,7 +17,9 @@ app.add_middleware(
         "https://python.fokusistatistik.com",
         "http://python.fokusistatistik.com",
         "http://localhost:3050",
-        "http://localhost:3000"
+        "http://localhost:3000",
+        "http://145.223.85.215:3050",
+        "http://145.223.85.215:8050"
     ],
     allow_credentials=True,
     allow_methods=["*"],
