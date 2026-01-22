@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api import endpoints
+from api import endpoints
 
 app = FastAPI(
     title="Fokus İstatistik Python Engine",

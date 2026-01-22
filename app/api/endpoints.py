@@ -9,7 +9,7 @@ import io
 import sys
 import platform
 
-from app.core.security import (
+from core.security import (
     create_access_token, 
     verify_password, 
     get_current_user, 
