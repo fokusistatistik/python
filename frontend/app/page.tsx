@@ -5,8 +5,6 @@ import Dashboard from '@/components/Dashboard';
 import JsonAnalyzer from '@/components/JsonAnalyzer';
 import FileUploader from '@/components/FileUploader';
 
-export const revalidate = 0;
-
 export default function Home() {
   const router = useRouter();
 
