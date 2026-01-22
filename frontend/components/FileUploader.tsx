@@ -95,20 +95,21 @@ export default function FileUploader() {
                             <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                             Quick Metrics
                         </h3>
+                        {/* ... (Metrics Grid Content Same as Before) ... */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                             <div>
                                 <p className="text-slate-400 text-xs uppercase tracking-wider">Rows</p>
-                                <p className="text-2xl font-mono font-bold">{result.meta.rows}</p>
+                                <p className="text-2xl font-mono font-bold">{result.meta?.rows || result.rows}</p>
                             </div>
                             <div>
                                 <p className="text-slate-400 text-xs uppercase tracking-wider">Columns</p>
-                                <p className="text-2xl font-mono font-bold">{result.meta.cols}</p>
+                                <p className="text-2xl font-mono font-bold">{result.meta?.cols || result.cols}</p>
                             </div>
                             <div className="col-span-2">
                                 <p className="text-slate-400 text-xs uppercase tracking-wider mb-1">Missing Values</p>
                                 <div className="flex flex-wrap gap-2">
-                                    {Object.entries(result.meta.missing_values).filter(([_, v]) => v as number > 0).length > 0 ? (
-                                        Object.entries(result.meta.missing_values).map(([k, v]) => (
+                                    {(result.meta?.missing_values || result.missing_values) && Object.entries(result.meta?.missing_values || result.missing_values).filter(([_, v]) => v as number > 0).length > 0 ? (
+                                        Object.entries(result.meta?.missing_values || result.missing_values).map(([k, v]) => (
                                             (v as number) > 0 && <span key={k} className="text-xs bg-red-500/20 text-red-200 px-2 py-1 rounded">{k}: {v as number}</span>
                                         ))
                                     ) : (
@@ -118,6 +119,48 @@ export default function FileUploader() {
                             </div>
                         </div>
                     </div>
+
+                    {/* Correlation Matrix Skeleton / Visual */}
+                    {result.correlation && Object.keys(result.correlation).length > 0 && (
+                        <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm overflow-x-auto">
+                            <h3 className="text-lg font-bold text-slate-700 mb-4 border-l-4 border-violet-500 pl-3">Correlation Matrix</h3>
+                            <div className="min-w-full inline-block align-middle">
+                                <div className="border rounded-lg overflow-hidden">
+                                    <table className="min-w-full divide-y divide-gray-200">
+                                        <thead className="bg-gray-50">
+                                            <tr>
+                                                <th className="px-3 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Feature</th>
+                                                {Object.keys(result.correlation).map(col => (
+                                                    <th key={col} className="px-3 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">{col}</th>
+                                                ))}
+                                            </tr>
+                                        </thead>
+                                        <tbody className="bg-white divide-y divide-gray-200">
+                                            {Object.entries(result.correlation).map(([rowKey, rowData]: [string, any]) => (
+                                                <tr key={rowKey}>
+                                                    <td className="px-3 py-2 whitespace-nowrap text-sm font-medium text-gray-900 bg-gray-50">{rowKey}</td>
+                                                    {Object.keys(result.correlation).map(colKey => {
+                                                        const val = rowData[colKey];
+                                                        // Color coding based on correlation
+                                                        let bg = 'bg-white';
+                                                        if (val > 0.7) bg = 'bg-blue-100';
+                                                        if (val < -0.7) bg = 'bg-red-100';
+                                                        if (val === 1) bg = 'bg-slate-100';
+
+                                                        return (
+                                                            <td key={colKey} className={`px-3 py-2 whitespace-nowrap text-sm text-gray-500 text-center ${bg}`}>
+                                                                {val.toFixed(2)}
+                                                            </td>
+                                                        );
+                                                    })}
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    )}
 
                     {Object.keys(result.numeric_stats).map((col: string) => {
                         const data = result.numeric_stats[col];

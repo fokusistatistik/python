@@ -16,7 +16,7 @@ services:
     build:
       context: ./frontend
       args:
-        NEXT_PUBLIC_API_URL: /api
+        NEXT_PUBLIC_API_URL: https://python.fokusistatistik.com/api
     container_name: fokus_frontend
     restart: always
     ports:
