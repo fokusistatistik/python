@@ -34,11 +34,10 @@ export default function LogoutButton() {
     return (
         <button
             onClick={handleLogout}
-            title="Çıkış Yap"
-            className="fixed top-4 right-4 z-50 flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg shadow-lg transition-all duration-300 font-semibold"
+            className="flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-all duration-300 font-semibold text-sm"
         >
-            <span className="text-sm">Çıkış Yap</span>
-            <LogOut size={18} />
+            <span>Çıkış Yap</span>
+            <LogOut size={16} />
         </button>
     );
 }
