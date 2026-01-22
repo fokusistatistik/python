@@ -28,8 +28,8 @@ export default function Home() {
             <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Beta V1.0</span>
           </div>
           <nav className="flex gap-4 items-center">
-            <button className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Documentation</button>
-            <button className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Support</button>
+            <button className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Dokümantasyon</button>
+            <button className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Destek</button>
           </nav>
         </div>
       </header>
@@ -38,11 +38,11 @@ export default function Home() {
 
         <div className="mb-12">
           <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight lg:text-5xl mb-4">
-            Data Analysis <br />
-            <span className="text-blue-600">Reimagined.</span>
+            Veri Analizi <br />
+            <span className="text-blue-600">Yeniden Tasarlandı.</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl leading-relaxed">
-            Welcome to the new standard in statistical computing. Upload your datasets or analyze raw JSON key-value pairs instantly.
+            İstatistiksel hesaplamalarda yeni standarda hoş geldiniz. Veri setlerinizi yükleyin veya JSON anahtar-değer çiftlerini anında analiz edin.
           </p>
         </div>
 

@@ -47,25 +47,25 @@ export default function LoginPage() {
             <div className="glass-panel w-full max-w-md p-8 relative z-10">
                 <div className="text-center mb-8">
                     <img src="https://static.fokusistatistik.com/resimler/favicon.png" alt="Fokus Logo" className="w-16 h-16 mx-auto mb-4 drop-shadow-lg" />
-                    <h1 className="text-2xl font-bold text-slate-900">Welcome Back</h1>
-                    <p className="text-slate-500 text-sm">Sign in to Fokus İstatistik Platform</p>
+                    <h1 className="text-2xl font-bold text-slate-900">Hoş Geldiniz</h1>
+                    <p className="text-slate-500 text-sm">Fokus İstatistik Platformu'na Giriş Yapın</p>
                     <span className="inline-block mt-2 px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Beta V1.0</span>
                 </div>
 
                 <form onSubmit={handleLogin} className="space-y-6">
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">Username</label>
+                        <label className="block text-sm font-medium text-slate-700 mb-1">Kullanıcı Adı</label>
                         <input
                             type="text"
                             required
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all"
-                            placeholder="Enter username"
+                            placeholder="Kullanıcı adınızı girin"
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">Password</label>
+                        <label className="block text-sm font-medium text-slate-700 mb-1">Şifre</label>
                         <input
                             type="password"
                             required
@@ -87,7 +87,7 @@ export default function LoginPage() {
                         disabled={loading}
                         className="w-full bg-slate-900 text-white py-3 rounded-lg font-bold hover:bg-slate-800 transition-colors disabled:opacity-50"
                     >
-                        {loading ? 'Signing in...' : 'Sign In'}
+                        {loading ? 'Giriş Yapılıyor...' : 'Giriş Yap'}
                     </button>
                 </form>
 
