@@ -5,6 +5,8 @@ import Dashboard from '@/components/Dashboard';
 import JsonAnalyzer from '@/components/JsonAnalyzer';
 import FileUploader from '@/components/FileUploader';
 
+export const revalidate = 0;
+
 export default function Home() {
   const router = useRouter();
 
@@ -20,18 +22,16 @@ export default function Home() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/50 backdrop-blur-xl border-b border-slate-200/50">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-tr from-blue-600 to-violet-600 rounded-lg shadow-lg shadow-blue-500/30"></div>
+          <div className="flex items-center gap-3">
+            <img src="https://static.fokusistatistik.com/resimler/favicon.png" alt="Fokus Logo" className="w-8 h-8 drop-shadow-md" />
             <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700">
               Fokus İstatistik
             </h1>
+            <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Beta V1.0</span>
           </div>
-          <nav className="flex gap-4">
+          <nav className="flex gap-4 items-center">
             <button className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Documentation</button>
             <button className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Support</button>
-            <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs font-bold text-slate-500">
-              FK
-            </div>
           </nav>
         </div>
       </header>

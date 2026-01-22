@@ -49,6 +49,7 @@ export default function LoginPage() {
                     <img src="https://static.fokusistatistik.com/resimler/favicon.png" alt="Fokus Logo" className="w-16 h-16 mx-auto mb-4 drop-shadow-lg" />
                     <h1 className="text-2xl font-bold text-slate-900">Welcome Back</h1>
                     <p className="text-slate-500 text-sm">Sign in to Fokus İstatistik Platform</p>
+                    <span className="inline-block mt-2 px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Beta V1.0</span>
                 </div>
 
                 <form onSubmit={handleLogin} className="space-y-6">
