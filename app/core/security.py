@@ -14,7 +14,7 @@ API_KEY_NAME = "X-API-Key"
 API_KEY_VALUE = "fokusistatistik"
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/token", auto_error=False)
 api_key_header = APIKeyHeader(name=API_KEY_NAME, auto_error=False)
 
 # Mock DB
@@ -49,19 +49,20 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
 
 # Dependencies
 async def get_current_user(
-    token: str = Depends(oauth2_scheme), 
-    api_key: str = Security(api_key_header)
+    token: Optional[str] = Depends(oauth2_scheme), 
+    api_key: Optional[str] = Security(api_key_header)
 ):
     # Allow if valid API Key is present (Service-to-Service or Dev)
     if api_key == API_KEY_VALUE:
         return {"username": "apikey_user"}
 
-    # Otherwise check JWT
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
     )
+
+    # If no API key, we MUST have a token
     if not token:
          raise credentials_exception
          
