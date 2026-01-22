@@ -2,7 +2,7 @@ name: Deploy to VPS
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "test" ]
 
 jobs:
   deploy:
@@ -21,9 +21,9 @@ jobs:
 
             # Clone or Pull
             if [ -d ".git" ]; then
-              git pull https://github.com/fokusistatistik/python.git main
+              git pull https://github.com/fokusistatistik/python.git test
             else
-              git clone https://github.com/fokusistatistik/python.git .
+              git clone -b test https://github.com/fokusistatistik/python.git .
             fi
             
             # Deploy
